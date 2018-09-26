@@ -16,6 +16,10 @@ Route::group(['middleware' => 'auth'], function() {
     Route::group(['middleware' => 'email_verified'], function() {
         //收货地址管理
         Route::resource('user_addresses','UserAddressesController');
+        //收藏与取消
+        Route::post('products/{product}/favorite', 'ProductsController@favor')->name('products.favor');
+        Route::delete('products/{product}/favorite', 'ProductsController@disfavor')->name('products.disfavor');
+
     });
 });
 

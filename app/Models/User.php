@@ -31,8 +31,23 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /**
+     * 收货地址
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function addresses()
     {
         return $this->hasMany(UserAddress::class);
+    }
+
+    /**
+     * 用户收藏的商品
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function favoriteProducts()
+    {
+        return $this->belongsToMany(Product::class, 'user_favorite_products')
+            ->withTimestamps()
+            ->orderBy('user_favorite_products.created_at', 'desc');
     }
 }
