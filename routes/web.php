@@ -1,6 +1,6 @@
 <?php
 
-Route::get('/', 'PagesController@root')->name('root');
+Route::redirect('/', '/products')->name('root');
 
 Auth::routes();
 
@@ -13,6 +13,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::group(['middleware' => 'email_verified'], function() {
         //收货地址管理
         Route::resource('user_addresses','UserAddressesController');
+        Route::get('products', 'ProductsController@index')->name('products.index');
     });
 });
 
