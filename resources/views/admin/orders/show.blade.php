@@ -42,6 +42,9 @@
             <tr>
                 <td>订单金额：</td>
                 <td colspan="3">￥{{ $order->total_amount }}</td>
+                <!-- 这里也新增了一个发货状态 -->
+                <td>发货状态：</td>
+                <td>{{ \App\Models\Order::$shipStatusMap[$order->ship_status] }}</td>
             </tr>
             </tbody>
         </table>
