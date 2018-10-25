@@ -27,6 +27,7 @@ Route::group(['middleware' => 'auth'], function() {
         Route::delete('cart/{sku}', 'CartController@remove')->name('cart.remove');
 
         //订单
+        Route::post('orders/{order}/received', 'OrdersController@received')->name('orders.received');//确认收货
         Route::resource('orders', 'OrdersController', ['only' => [
             'index', 'show','store'
         ]]);
